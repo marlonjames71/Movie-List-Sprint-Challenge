@@ -18,41 +18,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tRo-fb-bGy">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tRo-fb-bGy">
                                 <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieCell" id="ab1-SV-XC5" customClass="MovieTableViewCell" customModule="Movie_List" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ab1-SV-XC5" id="bx9-Vo-bIO">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a6s-0o-wEk">
-                                                    <rect key="frame" x="20" y="11" width="374" height="38"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="28"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Movie Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GT-J8-wcd">
-                                                            <rect key="frame" x="0.0" y="0.0" width="302" height="38"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="286" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erU-hu-19b">
-                                                            <rect key="frame" x="310" y="0.0" width="64" height="38"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erU-hu-19b">
+                                                            <rect key="frame" x="294" y="0.0" width="80" height="28"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="80" id="9cx-xo-G4K"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <state key="normal" title="Not Seen"/>
                                                             <connections>
                                                                 <action selector="seenButtonTapped:" destination="ab1-SV-XC5" eventType="touchUpInside" id="vPB-8e-Zph"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="erU-hu-19b" firstAttribute="centerY" secondItem="6GT-J8-wcd" secondAttribute="centerY" id="X33-AP-KZE"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="a6s-0o-wEk" firstAttribute="top" secondItem="bx9-Vo-bIO" secondAttribute="topMargin" id="2gf-yj-B8q"/>
+                                                <constraint firstItem="a6s-0o-wEk" firstAttribute="top" secondItem="bx9-Vo-bIO" secondAttribute="topMargin" id="67S-lJ-4Km"/>
                                                 <constraint firstItem="a6s-0o-wEk" firstAttribute="leading" secondItem="bx9-Vo-bIO" secondAttribute="leadingMargin" id="Ddi-1e-sjX"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="a6s-0o-wEk" secondAttribute="trailing" id="JXX-Up-v4f"/>
-                                                <constraint firstItem="a6s-0o-wEk" firstAttribute="bottom" secondItem="bx9-Vo-bIO" secondAttribute="bottomMargin" id="QRj-xp-WHc"/>
+                                                <constraint firstItem="a6s-0o-wEk" firstAttribute="leading" secondItem="bx9-Vo-bIO" secondAttribute="leadingMargin" id="ibd-Zm-sVT"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="a6s-0o-wEk" secondAttribute="bottom" id="kWG-Er-1ff"/>
+                                                <constraint firstItem="a6s-0o-wEk" firstAttribute="trailing" secondItem="bx9-Vo-bIO" secondAttribute="trailingMargin" id="lft-0K-4Ld"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -122,7 +131,12 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNi-Ye-0iF">
-                                <rect key="frame" x="170.5" y="380" width="73" height="30"/>
+                                <rect key="frame" x="132" y="380" width="150" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="1Gk-1u-eZg"/>
+                                    <constraint firstAttribute="height" constant="40" id="8oh-hK-ZRj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <state key="normal" title="Add Movie"/>
                                 <connections>
                                     <action selector="addMovieButtonTapped:" destination="N6D-7L-Hiv" eventType="touchUpInside" id="cQY-ef-0j7"/>

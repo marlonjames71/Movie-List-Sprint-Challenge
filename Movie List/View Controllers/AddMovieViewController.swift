@@ -19,6 +19,9 @@ class AddMovieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		title = "Add Movie"
+		addMovieButton.backgroundColor = #colorLiteral(red: 0.2414570153, green: 0.251044631, blue: 0.2682756484, alpha: 1)
+		addMovieButton.tintColor = .white
+		addMovieButton.layer.cornerRadius = 20
 
     }
     
