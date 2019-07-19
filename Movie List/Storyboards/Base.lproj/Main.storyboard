@@ -33,14 +33,14 @@
                                                     <rect key="frame" x="20" y="11" width="374" height="38"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Movie Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GT-J8-wcd">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="38"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="302" height="38"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erU-hu-19b">
-                                                            <rect key="frame" x="328" y="0.0" width="46" height="38"/>
-                                                            <state key="normal" title="Button"/>
+                                                            <rect key="frame" x="310" y="0.0" width="64" height="38"/>
+                                                            <state key="normal" title="Not Seen"/>
                                                             <connections>
                                                                 <action selector="seenButtonTapped:" destination="ab1-SV-XC5" eventType="touchUpInside" id="vPB-8e-Zph"/>
                                                             </connections>
