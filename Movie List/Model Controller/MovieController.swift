@@ -11,4 +11,19 @@ import Foundation
 
 class MovieController {
 	var movies: [Movie] = []
+
+	func toggleHasSeen(for movie: Movie) {
+		guard let index = movies.firstIndex(of: movie) else { return }
+		if movies[index].hasSeen == false {
+			movies[index].hasSeen = true
+		} else if movies[index].hasSeen == true {
+			movies[index].hasSeen = false
+		}
+	}
+
+	func addMovie(movieTitle: String) {
+		let movie = Movie(name: movieTitle)
+		movies.append(movie)
+	}
 }
+

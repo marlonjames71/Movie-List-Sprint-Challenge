@@ -15,8 +15,15 @@ class MoviesTableViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	
 
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		tableView.reloadData()
+
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
 		tableView.reloadData()
 		title = "Movie List"
 		tableView.tableFooterView = UIView()
@@ -27,10 +34,9 @@ class MoviesTableViewController: UIViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowAddMovieSegue"{
 			guard let addMovieVC = segue.destination as? AddMovieViewController else { return }
+			addMovieVC.movieController = movieController
 		}
-		
 	}
-
 }
 
 extension MoviesTableViewController: UITableViewDataSource {
@@ -41,15 +47,18 @@ extension MoviesTableViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieTableViewCell else { return UITableViewCell() }
 		let movie = movieController.movies[indexPath.row]
-		cell.movieLabel.text = movie.name
+		cell.movie = movie
+		cell.delegate = self
 		
-
 		return cell
 	}
 }
 
-extension MoviesTableViewController: AddMovieViewControllerDelegate {
-	func addMovie(_ movie: Movie) {
-		movieController.movies.append(movie)
+extension MoviesTableViewController: MovieTableViewCellDelegate {
+	func seenButtonTapped(on cell: MovieTableViewCell) {
+		guard let indexPath = tableView.indexPath(for: cell) else { return }
+		let movie = movieController.movies[indexPath.row]
+		movieController.toggleHasSeen(for: movie)
+		tableView.reloadRows(at: [indexPath], with: .automatic)
 	}
 }

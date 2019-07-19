@@ -8,13 +8,8 @@
 
 import UIKit
 
-protocol AddMovieViewControllerDelegate {
-	func addMovie(_ movie: Movie)
-}
-
 class AddMovieViewController: UIViewController {
 
-	var delegate: AddMovieViewControllerDelegate?
 	var movieController: MovieController?
 
 	@IBOutlet weak var textFieldView: UIView!
@@ -28,9 +23,9 @@ class AddMovieViewController: UIViewController {
     }
     
 	@IBAction func addMovieButtonTapped(_ sender: UIButton) {
-		guard let movieTitle = movieTextField.text else { return }
-		let movie = Movie(name: movieTitle)
-		delegate?.addMovie(movie)
+		guard let movieTitle = movieTextField.text,
+			let movieController = movieController else { return }
+		movieController.addMovie(movieTitle: movieTitle)
 		self.navigationController?.popToRootViewController(animated: true)
 	}
 
