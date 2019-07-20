@@ -30,6 +30,7 @@ class MoviesTableViewController: UIViewController {
 		navigationController?.navigationBar.barStyle = .black
 		navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1177810126, green: 0.1257176072, blue: 0.1434536638, alpha: 1)
 	}
+	
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowAddMovieSegue"{
@@ -50,6 +51,7 @@ extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate 
 		cell.movie = movie
 		cell.delegate = self
 		
+		
 		return cell
 	}
 
@@ -66,10 +68,18 @@ extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate 
 }
 
 extension MoviesTableViewController: MovieTableViewCellDelegate {
+	func editName(of movie: Movie, to newTitle: String) {
+		guard let index = movieController.movies.firstIndex(of: movie) else { return }
+		movieController.updateMovie(movie: movie, title: newTitle)
+		tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+	}
+
 	func seenButtonTapped(on cell: MovieTableViewCell) {
 		guard let indexPath = tableView.indexPath(for: cell) else { return }
 		let movie = movieController.movies[indexPath.row]
 		movieController.toggleHasSeen(for: movie)
 		tableView.reloadRows(at: [indexPath], with: .automatic)
 	}
+
+
 }

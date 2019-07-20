@@ -10,9 +10,10 @@ import UIKit
 
 protocol MovieTableViewCellDelegate {
 	func seenButtonTapped(on cell: MovieTableViewCell)
+	func editName(of movie: Movie, to newTitle: String)
 }
 
-class MovieTableViewCell: UITableViewCell {
+class MovieTableViewCell: UITableViewCell, UITextFieldDelegate {
 
 	var delegate: MovieTableViewCellDelegate?
 
@@ -28,8 +29,28 @@ class MovieTableViewCell: UITableViewCell {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		seenButtonUINaturalState()
+		let tapCell = UITapGestureRecognizer(target: self, action: #selector(dblTapCell(_:)))
+		tapCell.delegate = self
+		tapCell.numberOfTapsRequired = 2
+		self.addGestureRecognizer(tapCell)
 	}
 
+	@objc func dblTapCell(_ sender: UITapGestureRecognizer) {
+		guard let movie = movie else { return }
+		print("\(movie.name)")
+		let tapAlertController = UIAlertController(title: "Would you like to edit this movie title?", message: nil, preferredStyle: .alert)
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		let save = UIAlertAction(title: "Save", style: .default) { (UIAlertAction) in
+			guard let title = tapAlertController.textFields?.first?.text else { return }
+			self.delegate?.editName(of: movie, to: title)
+		}
+		tapAlertController.addTextField(configurationHandler: { (textField) in
+			textField.text = movie.name
+		})
+		tapAlertController.addAction(cancel)
+		tapAlertController.addAction(save)
+		UIApplication.shared.keyWindow?.rootViewController?.present(tapAlertController, animated: true, completion: nil)
+	}
 
 	@IBAction func seenButtonTapped(_ sender: UIButton) {
 		delegate?.seenButtonTapped(on: self)
@@ -63,3 +84,5 @@ class MovieTableViewCell: UITableViewCell {
 		seenButtonUI(movie.hasSeen)
 	}
 }
+
+

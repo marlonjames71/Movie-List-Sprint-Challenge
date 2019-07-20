@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Movie: Equatable {
-	let name: String
+struct Movie: Equatable, Codable {
+	var name: String
 	var hasSeen: Bool
 
 	init(name: String, hasSeen: Bool = false) {

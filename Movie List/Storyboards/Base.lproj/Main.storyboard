@@ -64,9 +64,11 @@
                                                 <constraint firstItem="a6s-0o-wEk" firstAttribute="trailing" secondItem="bx9-Vo-bIO" secondAttribute="trailingMargin" id="lft-0K-4Ld"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="movieLabel" destination="6GT-J8-wcd" id="2f8-Pw-a3B"/>
                                             <outlet property="seenButton" destination="erU-hu-19b" id="kwo-Wi-bgU"/>
+                                            <segue destination="N6D-7L-Hiv" kind="show" identifier="EditMovieSegue" id="TZd-Sc-GhL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -96,6 +98,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="jKS-Gr-8ff"/>
             </objects>
             <point key="canvasLocation" x="957.97101449275374" y="20.758928571428569"/>
         </scene>
@@ -182,4 +185,7 @@
             <point key="canvasLocation" x="249" y="21"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="TZd-Sc-GhL"/>
+    </inferredMetricsTieBreakers>
 </document>
