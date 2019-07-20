@@ -11,13 +11,20 @@ import Foundation
 
 class MovieController {
 
-	var movies: [Movie] = []
-	let defaults = UserDefaults.standard
-	let listKey = "MovieList"
-
 	init() {
 		loadMoviesInList()
 	}
+
+	//MARK: - Properties (Movies, defaults, & keys)
+
+	var movies: [Movie] = []
+	
+	let defaults = UserDefaults.standard
+	let listKey = "MovieList"
+
+
+
+	//MARK: - Movie Functions
 
 	func toggleHasSeen(for movie: Movie) {
 		guard let index = movies.firstIndex(of: movie) else { return }
@@ -47,8 +54,10 @@ class MovieController {
 		saveMoviesInList()
 	}
 
-	private func saveMoviesInList() {
 
+	// MARK: - Persistence
+
+	private func saveMoviesInList() {
 		let encoder = PropertyListEncoder()
 		do {
 			let data = try encoder.encode(movies)

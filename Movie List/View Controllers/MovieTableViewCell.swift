@@ -15,6 +15,8 @@ protocol MovieTableViewCellDelegate {
 
 class MovieTableViewCell: UITableViewCell, UITextFieldDelegate {
 
+	//MARK: - Properties & Outlets
+
 	var delegate: MovieTableViewCellDelegate?
 
 	var movie: Movie? {
@@ -26,6 +28,8 @@ class MovieTableViewCell: UITableViewCell, UITextFieldDelegate {
 	@IBOutlet weak var movieLabel: UILabel!
 	@IBOutlet weak var seenButton: UIButton!
 
+	//MARK: - Lifecycle
+
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		seenButtonUINaturalState()
@@ -35,10 +39,11 @@ class MovieTableViewCell: UITableViewCell, UITextFieldDelegate {
 		self.addGestureRecognizer(tapCell)
 	}
 
+	//MARK: - Tap Gesture & Alert Action
+
 	@objc func dblTapCell(_ sender: UITapGestureRecognizer) {
 		guard let movie = movie else { return }
-		print("\(movie.name)")
-		let tapAlertController = UIAlertController(title: "Would you like to edit this movie title?", message: nil, preferredStyle: .alert)
+		let tapAlertController = UIAlertController(title: "Edit movie title:", message: nil, preferredStyle: .alert)
 		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 		let save = UIAlertAction(title: "Save", style: .default) { (UIAlertAction) in
 			guard let title = tapAlertController.textFields?.first?.text else { return }
@@ -52,9 +57,13 @@ class MovieTableViewCell: UITableViewCell, UITextFieldDelegate {
 		UIApplication.shared.keyWindow?.rootViewController?.present(tapAlertController, animated: true, completion: nil)
 	}
 
+	//MARK: - Argument for Protocol Method
+
 	@IBAction func seenButtonTapped(_ sender: UIButton) {
 		delegate?.seenButtonTapped(on: self)
 	}
+
+	//MARK: - UI Methods
 
 	private func seenButtonUINaturalState() {
 		seenButton.setTitle("Not Seen", for: .normal)

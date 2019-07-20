@@ -10,11 +10,16 @@ import UIKit
 
 class AddMovieViewController: UIViewController {
 
+	//MARK: - Properties & Outlets
+
 	var movieController: MovieController?
 
 	@IBOutlet weak var textFieldView: UIView!
 	@IBOutlet weak var movieTextField: UITextField!
 	@IBOutlet weak var addMovieButton: UIButton!
+
+
+	//MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +29,13 @@ class AddMovieViewController: UIViewController {
 		addMovieButton.layer.cornerRadius = 20
 
     }
-    
+
+	//MARK: - Add Movie function
+
 	@IBAction func addMovieButtonTapped(_ sender: UIButton) {
 		guard let movieTitle = movieTextField.text,
 			let movieController = movieController else { return }
 		movieController.addMovie(movieTitle: movieTitle)
 		self.navigationController?.popToRootViewController(animated: true)
 	}
-
 }

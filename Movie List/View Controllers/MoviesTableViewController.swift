@@ -10,15 +10,19 @@ import UIKit
 
 class MoviesTableViewController: UIViewController {
 
+	
+	//MARK: - Outlets & Properties
+
 	let movieController = MovieController()
 
 	@IBOutlet weak var tableView: UITableView!
-	
+
+
+	//MARK: - Lifecycle
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		tableView.reloadData()
-
 	}
 
 	override func viewDidLoad() {
@@ -30,7 +34,8 @@ class MoviesTableViewController: UIViewController {
 		navigationController?.navigationBar.barStyle = .black
 		navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1177810126, green: 0.1257176072, blue: 0.1434536638, alpha: 1)
 	}
-	
+
+	//MARK: - Navigation
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowAddMovieSegue"{
@@ -39,6 +44,8 @@ class MoviesTableViewController: UIViewController {
 		}
 	}
 }
+
+//MARK: - Extensions
 
 extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,8 +57,7 @@ extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate 
 		let movie = movieController.movies[indexPath.row]
 		cell.movie = movie
 		cell.delegate = self
-		
-		
+
 		return cell
 	}
 
@@ -80,6 +86,4 @@ extension MoviesTableViewController: MovieTableViewCellDelegate {
 		movieController.toggleHasSeen(for: movie)
 		tableView.reloadRows(at: [indexPath], with: .automatic)
 	}
-
-
 }
